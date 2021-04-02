@@ -80,7 +80,7 @@
 					$.get(URL + "/conv/" + chatUser.val() +"/" + chatId.val(), function(data){
 						console.log(data)
 						chat.empty();
-						data[0].conversation.forEach(msg => {
+						data.conversation.forEach(msg => {
 							chat.append("<strong>" + msg.sender + ": </strong>" + msg.content + "<br>")
 						});
 						chat.scrollTop(chat[0].scrollHeight);
