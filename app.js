@@ -1,14 +1,16 @@
 const http = require('http');
 const express = require("express");
 const io = require('socket.io');
-const cors = require('cors')
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 //Connect DB
+dotenv.config()
 const DB  = require("./config/db");
 const socketConnection  = require("./config/sockets");
 const socketFunctionality = require("./config/socketFuncs.js")
 
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 const host = process.env.HOST || 'localhost';
 
 //Serving Express Aplication
