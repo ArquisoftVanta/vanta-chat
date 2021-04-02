@@ -14,6 +14,6 @@ router.put('/', conv_controller.addMessage)
 router.get('/:userId', conv_controller.getConversations);
 
 //GET a conversation for the user
-router.get('/:userId/:convId', conv_controller.getConversations);
+router.get('/:userId/:convId', conv_controller.getConversationId);
 
 module.exports = router;
