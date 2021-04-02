@@ -32,6 +32,6 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-server.listen(port () => {
+server.listen(port, () => {
     console.log("Server connected on" + port)
 })
