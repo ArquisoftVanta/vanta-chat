@@ -12,6 +12,7 @@ exports.newConversation = function(req, res){
             .status(201)
             .send("Conversation created with ID " + conversation._id)
         }else{
+            console.log(err)
             return res
             .status(500) 
             .send("Server Error") 
