@@ -11,7 +11,6 @@ const socketConnection  = require("./config/sockets");
 const socketFunctionality = require("./config/socketFuncs.js")
 
 const port = process.env.PORT || 8080;
-const host = process.env.HOST || 'localhost';
 
 //Serving Express Aplication
 app = express();
@@ -33,6 +32,6 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-server.listen(port, host, () => {
-    console.log("Server connected on" + host + ":" + port)
+server.listen(port () => {
+    console.log("Server connected on" + port)
 })
