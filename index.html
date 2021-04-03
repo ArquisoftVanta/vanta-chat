@@ -29,7 +29,7 @@
 
 		<script>
 			$(function(){
-				const URL = "https://vanta-chat.herokuapp.com"
+				const URL = document.location.origin
 				let socket = io(URL, {autoConnect: false});
 				
 				let chat = $('#chatBox');
@@ -78,7 +78,6 @@
 					socket.connect();
 					
 					$.get(URL + "/conv/" + chatUser.val() +"/" + chatId.val(), function(data){
-						console.log(data)
 						chat.empty();
 						data.conversation.forEach(msg => {
 							chat.append("<strong>" + msg.sender + ": </strong>" + msg.content + "<br>")
