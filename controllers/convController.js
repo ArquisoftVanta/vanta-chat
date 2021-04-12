@@ -1,4 +1,4 @@
-const Conversation = require('../models/ConversationSchema')
+const {Conversation, Message}  = require('../models/ConversationSchema')
 
 //Receives 2 users and Creates a new conversation
 exports.newConversation = function(req, res){
@@ -10,7 +10,7 @@ exports.newConversation = function(req, res){
         if(!err){
             return res
             .status(201)
-            .send("Conversation created with ID " + conversation._id)
+            .send(conversation)
         }else{
             console.log(err)
             return res
@@ -20,20 +20,21 @@ exports.newConversation = function(req, res){
     })
 };
 
-//Receivs a Conversation and adds new Content to its Messages
+//Receivs a Conversation a Message and adds the new Content to its Messages
 exports.addMessage = async function(req, res){
     try{
         const id = req.body.convId
-        const message = {sender: req.body.userId, content: req.body.content}
+        const message = new Message({sender: req.body.userId, content: req.body.content})
         await Conversation.findById(id,
             (err, conv) => {
                 if(conv.user1 == message.sender || conv.user2 == message.sender){
                     conv.conversation.push(message)
                     conv.save((err) => {
                         if(!err){
+                            console.log(message)
                             return res
                                 .status(200)
-                                .send("Mensaje anadido a conversacion")
+                                .send(message)
                         }
                     })
                 }else{
@@ -50,7 +51,7 @@ exports.addMessage = async function(req, res){
     }
 };
 
-//Receives a user and Finds all conversations from it
+//Receives a User and Finds all conversations from it
 exports.getConversations = async function(req, res){
     try{
         const userId = req.params.userId

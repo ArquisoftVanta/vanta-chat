@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mssgSchema = new mongoose.Schema(
+const msgSchema = new mongoose.Schema(
 {
    sender:{
        type:String
@@ -24,11 +24,12 @@ const convSchema = new mongoose.Schema(
     active:{
         type: Boolean
     },
-    conversation:[mssgSchema]
+    conversation:[msgSchema]
 },
 {
     timestamps: true
 });
 
 let Conversation = mongoose.model("Conversation", convSchema);
-module.exports = Conversation;
+let Message = mongoose.model("Message", msgSchema)
+module.exports = {Conversation, Message};
