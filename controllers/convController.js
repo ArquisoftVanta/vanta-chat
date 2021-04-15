@@ -75,10 +75,11 @@ exports.getConversationId = async function(req, res){
     try{
         const userId = req.params.userId;
         const convId = req.params.convId;
-
+        console.log(convId)
         await Conversation.findById(convId,
             (err, conv) => {
                 if(!err){
+                    console.log(conv);
                     if(conv.user1 == userId || conv.user2 == userId){
                         return res
                         .status(200)
