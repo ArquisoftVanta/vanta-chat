@@ -15,7 +15,8 @@ const port = process.env.PORT || 8080;
 //Serving Express Aplication
 app = express();
 server = http.Server(app);
-app.use(express.json());;
+app.use(express.json());
+app.use(cors());
 
 //Connecting Socket Server
 socket = io(server);
