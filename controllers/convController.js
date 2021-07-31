@@ -74,7 +74,7 @@ exports.getConversationId = async function (req, res) {
     //console.log(convId)
     await Conversation.findById(convId, (err, conv) => {
       if (!err) {
-        //console.log(conv);
+        console.log(conv);
         if (conv.user1 == userId || conv.user2 == userId) {
           return res.status(200).send(conv);
         } else {
